@@ -1,6 +1,7 @@
 package com.vytrack.pages;
 
 import com.vytrack.step_definitions.LoginStepDefs;
+import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +11,8 @@ public class LoginPage {
 
     public LoginPage(){
 
-        PageFactory.initElements(Driver.get(), this);
+        PageFactory.initElements(Driver.get(), this);//static initElements method of PageFactory class
+                                                          // for initializing web elements
     }
 
     @FindBy(id="prependedInput")
@@ -31,24 +33,20 @@ public class LoginPage {
     }
 
     public void loginWithUserType(String username) throws InterruptedException {
-
+        Driver.get().get(ConfigurationReader.get("url"));
         LoginStepDefs loginStepDefs = new LoginStepDefs();
 
         switch (username){
             case "driver":
                 loginStepDefs.the_user_enters_the_driver_information();
                 break;
-            case "storemanager":
+            case "store manager":
                 loginStepDefs.the_user_enters_the_store_manager_information();
                 break;
-            case "salesmanager":
+            case "sales manager":
                 loginStepDefs.the_user_enters_the_sales_manager_information();
                 break;
         }
-
-
-
-
 
 
     }

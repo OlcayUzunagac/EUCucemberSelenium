@@ -7,9 +7,8 @@ Feature: Login as different users
     And the title contains "Dashboard"
 
 
-  @wip    #homework
+   #homework
   Scenario: login as any user
-    Given the user is on the login page
     Given the user logged in as "usertype"
     Then the user should be able to login
     And the title contains "Dashboard"
