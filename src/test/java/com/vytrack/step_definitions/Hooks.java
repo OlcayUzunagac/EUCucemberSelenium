@@ -7,9 +7,14 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+import java.util.concurrent.TimeUnit;
+
 public class Hooks {
     @Before//they come from cucumber(before and after)
-    public void setUp(){ }
+    public void setUp(){
+        Driver.get().manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        Driver.get().manage().window().maximize();
+    }
 
     @After
     public void tearDown(Scenario scenario){
@@ -23,9 +28,6 @@ public class Hooks {
 
     @Before("@db")
     public void setUpdb(){
-
-
-
 
     }
 
